@@ -9,13 +9,13 @@
 	<meta charset="UTF-8">
 	<title>Home page</title>
 
-	<link href="../assets/css/bootstrap.css" rel="stylesheet">
-	<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="../assets/css/style.css" rel="stylesheet">
-	<link href='../assets/css/font.css' rel='stylesheet' type='text/css'>
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link href='assets/css/font.css' rel='stylesheet' type='text/css'>
 
-	<script src="../assets/js/jquery.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -25,7 +25,7 @@
 		<div class="container">
 			<div class="row">
 				<!--LOGO-->
-				<div class="span3"><a class="brand" href="#"><img src="../assets/img/logo.png" /></a></div>
+				<div class="span3"><a class="brand" href="HomeController"><img src="assets/img/logo.png" /></a></div>
 				<!-- /LOGO -->
 
 				<!-- MAIN NAVIGATION -->
@@ -36,22 +36,20 @@
 									class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<ul class="nav">
-									<li class="active"><a href="index.html">Home</a></li>
+									<li class="active"><a href="HomeController">Home</a></li>
 
 									<li class="dropdown">
 										<a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
 										<ul class="dropdown-menu">
-											<li><a href="about.html">Company</a></li>
-											<li><a href="about.html">History</a></li>
-											<li><a href="about.html">Team</a></li>
+											<li><a href="#">Company</a></li>
+											<li><a href="#">History</a></li>
+											<li><a href="#">Team</a></li>
+											<li><a href="#">Contact</a></li>
 										</ul>
 
 									</li>
-
-									<li><a href="service.html">Services</a></li>
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="contact.html">Contact</a></li>
-
+									<li><a href="#">Sign up</a></li>
+									<li><a href="#">Sign in</a></li>
 								</ul>
 							</div>
 
@@ -70,44 +68,27 @@
 
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
+				<c:forEach items="${slidebanners}" var="slide">
+					<div class="${slide.getId() == 1 ? 'item active' : 'item' }">
+						<div class="container">
+							<div class="row">
 
-				<div class="active item">
-					<div class="container">
-						<div class="row">
+								<div class="span6">
 
-							<div class="span6">
+									<div class="carousel-caption">
+										<h1>${slide.getTitle()}</h1>
+										<p class="lead">${slide.getContent()}.</p>
+										<a class="btn btn-large btn-primary" href="#">Tham gia ngay cùng chúng tôi</a>
+									</div>
 
-								<div class="carousel-caption">
-									<h1>Example headline</h1>
-									<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
-										porta
-										gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-									<a class="btn btn-large btn-primary" href="#">Sign up today</a>
 								</div>
 
+								<div class="span6 mt-5"> <img src="assets/img/slide/${slide.getImage_path()}" width="500px"></div>
+
 							</div>
-
-							<div class="span6"> <img src="../assets/img/slide/slide1.jpg"></div>
-
 						</div>
 					</div>
-				</div>
-				<div class="item">
-					<div class="container">
-						<div class="row">
-							<div class="span6">
-								<div class="carousel-caption">
-									<h1>Example headline</h1>
-									<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
-										porta
-										gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-									<a class="btn btn-large btn-primary" href="#">Sign up today</a>
-								</div>
-							</div>
-							<div class="span6"> <img src="../assets/img/slide/slide2.jpg"></div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<!-- Carousel nav -->
 			<a class="carousel-control left " href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a>
@@ -118,17 +99,17 @@
 
 		<!-- Feature 
   ==============================================-->
-		<div class="row feature-box">
+		<div class="row feature-box mt-5">
 			<div class="span12 cnt-title">
-				<h1>At vero eos et accusamus et iusto odio dignissimos</h1>
-				<span>Contrary to popular belief, Lorem Ipsum is not simply random text.</span>
+				<h1>Học Toeic miễn phí dành cho mọi người!</h1>
+				<span>Học tiếng Anh cùng chúng tôi mọi lúc mọi nơi.</span>
 			</div>
 
 			<div class="span4">
-				<img src="../assets/img/icon3.png">
-				<h2>Feature A</h2>
+				<img src="assets/img/icon7.png" width = "100px">
+				<h2>Làm bài tập phần nghe</h2>
 				<p>
-					Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+					Nâng cao kỹ năng nghe cùng hệ thống bài tập của chúng tôi.
 				</p>
 
 				<a href="#">Read More &rarr;</a>
@@ -136,45 +117,24 @@
 			</div>
 
 			<div class="span4">
-				<img src="../assets/img/icon2.png">
-				<h2>Feature B</h2>
+				<img src="assets/img/icon8.png" width = "100px">
+				<h2>Làm bài tập phần đọc</h2>
 				<p>
-					Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua.
+					Nâng cao kỹ năng đọc hiểu cùng hệ thống bài tập cơ bản và nâng cao
 				</p>
 				<a href="#">Read More &rarr;</a>
 			</div>
 
 			<div class="span4">
-				<img src="../assets/img/icon1.png">
-				<h2>Feature C</h2>
+				<img src="assets/img/icon9.png" width = "100px">
+				<h2>Làm bài test hoàn chỉnh</h2>
 				<p>
-					Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+					Trải nghiệm thi thử Toeic online như thi thật!.
 				</p>
 				<a href="#">Read More &rarr;</a>
 			</div>
 		</div>
 		<!-- /.Feature -->
-
-		<div class="hr-divider"></div>
-
-		<!-- Row View -->
-		<div class="row">
-			<div class="span6"><img src="../assets/img/responsive.png"></div>
-
-			<div class="span6">
-				<img class="hidden-phone" src="../assets/img/icon4.png" alt="">
-				<h1>Fully Responsive</h1>
-				<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-					tortor
-					quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-					Aenean
-					ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-				<a href="#">Read More &rarr;</a>
-			</div>
-		</div>
-
-
 	</div>
 	<!-- /.Row View -->
 
@@ -183,15 +143,15 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+				Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Learnin Toeic Free</a>
 			</div>
 			<div class="span6">
 				<div class="social pull-right">
-					<a href="#"><img src="../assets/img/social/googleplus.png" alt=""></a>
-					<a href="#"><img src="../assets/img/social/dribbble.png" alt=""></a>
-					<a href="#"><img src="../assets/img/social/twitter.png" alt=""></a>
-					<a href="#"><img src="../assets/img/social/dribbble.png" alt=""></a>
-					<a href="#"><img src="../assets/img/social/rss.png" alt=""></a>
+					<a href="#"><img src="assets/img/social/googleplus.png" alt=""></a>
+					<a href="#"><img src="assets/img/social/dribbble.png" alt=""></a>
+					<a href="#"><img src="assets/img/social/twitter.png" alt=""></a>
+					<a href="#"><img src="assets/img/social/dribbble.png" alt=""></a>
+					<a href="#"><img src="assets/img/social/rss.png" alt=""></a>
 				</div>
 			</div>
 		</div>

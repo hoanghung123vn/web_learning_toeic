@@ -3,6 +3,7 @@ package Controllers;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import BEAN.Slidebanner;
+import DAO.SlidebannerDAO;
 import DB.DBConnection;
 
 @WebServlet("/HomeController")
@@ -24,7 +27,8 @@ public class HomeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection conn = DBConnection.createConnection();
-		
+		List<Slidebanner> list = SlidebannerDAO.getAllSlidebanners(conn);
+		request.setAttribute("slidebanners", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/Views/Home.jsp");
 		rd.forward(request, response);
 		try {
